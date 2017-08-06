@@ -37,7 +37,7 @@ var articles = {
     date:'Aug 06, 2017',
     content:`
             <p>
-                This is my three paragraph, This is my three paragraph, This is my three paragraph, This is my three paragraph.
+                This is my third paragraph, This is my third paragraph, This is my third paragraph, This is my third paragraph.
             </p>`
     }
 };
