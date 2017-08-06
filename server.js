@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
+var articles = {
+    articleOne : {
     title:'Article one | Pratap',
     heading:'Article  one',
     date:'Aug 02, 2017',
@@ -19,6 +20,26 @@ var articleOne = {
             <p>
                 This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph, This is my first paragraph.
             </p>`
+},
+    articleTwo: {
+    title:'Article two | Pratap',
+    heading:'Article  Two',
+    date:'Aug 04, 2017',
+    content:`
+            <p>
+                This is my second paragraph, This is my second paragraph, This is my second paragraph, This is my second paragraph.
+            </p>`
+            
+    },
+    articleThree:{
+    title:'Article Three | Pratap',
+    heading:'Article  Three',
+    date:'Aug 06, 2017',
+    content:`
+            <p>
+                This is my three paragraph, This is my three paragraph, This is my three paragraph, This is my three paragraph.
+            </p>`
+    }
 };
 
 function createTemplate(data) {
@@ -59,16 +80,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res){
-    res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName', function(req, res){
+    //articleName == Artcle-one
+    //articles[articleName] == contant object for article one
+    var articleName = req.params.articeName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
