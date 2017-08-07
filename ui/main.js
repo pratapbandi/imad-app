@@ -5,6 +5,7 @@ element.innerHTML = 'New value by Patap.';
 
 //moving image
 var img = document.getElementById('madi');
+var marginleft = 0;
 function moveRight(){
     marginleft = marginleft + 1;
     img.style.marginleft = marginleft + 'px';
