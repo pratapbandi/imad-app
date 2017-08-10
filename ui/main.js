@@ -36,5 +36,5 @@ var submit = document.getElementById('submit_btn');
         list += '<li>' + names[i] + '<li>';
     }
     var ul = document.getElementById('namelist');
-    ui.innerHTML = list;
+    ul.innerHTML = list;
 };
