@@ -86,6 +86,18 @@ app.get('/counter', function(req, res){
    res.send(counter.toString());
 });
 
+function hash(input, salt){
+    //create hash
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+}
+
+app.get('/hash/:input', function(req, res){
+  var hashedString = hash(req.param.input, 'this-is-some-random-string');
+  res.send(hashedString);
+    
+});
+
 app.get('/:articleName', function(req, res){
     //articleName == Artcle-one
     //articles[articleName] == contant object for article one
