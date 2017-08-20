@@ -82,12 +82,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var counter = 0;
-app.get('/counter', function(req, res){
-   counter = counter+1;
-   res.send(counter.toString());
-});
-
 function hash(input, salt){
     //create hash
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
@@ -99,6 +93,14 @@ app.get('/hash/:input', function(req, res){
   res.send(hashedString);
     
 });
+
+
+var counter = 0;
+app.get('/counter', function(req, res){
+   counter = counter+1;
+   res.send(counter.toString());
+});
+
 
 app.get('/:articleName', function(req, res){
     //articleName == Artcle-one
